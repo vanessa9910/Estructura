@@ -56,3 +56,6 @@ int main(){
       
    return (0);
 }
+//Pointers and arrays can do the same operations, however the big difference is that pointers  can be assigned new addresses,
+//while arrays cannot.
+//
