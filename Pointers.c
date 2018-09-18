@@ -43,3 +43,17 @@ void display(struct stack *st) {
    for (i = st->top; i >= 0; i--)
       printf("\n%d", st->arr[i]);
 }
+int main(){
+ int element,  val;
+   struct stack ptr;
+   init_stk(&ptr);
+   scanf("%d", &size);
+   scanf("%d", &val);
+   push(&ptr, val);
+ 
+    element = pop(&ptr);
+    
+    display(&ptr);
+      
+   return (0);
+}
