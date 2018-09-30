@@ -1,44 +1,69 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-#include <iostream>
+#include <stdio.h>
 #include <stdlib.h>
-#include "myLinkedList.h"
-using namespace std;
 
-struct node {
-    int data;
-    struct node * next;
-};
+struct Node { 
+    int data; 
+    struct Node *next; 
+}; 
 
-node* head;
+void addNode(struct Node** head_ref, int new_data) 
+{ 
+    struct Node* new_node = (struct Node*) malloc(sizeof(struct Node)); 
+    new_node->data  = new_data; 
+    new_node->next = (*head_ref); 
+    (*head_ref)    = new_node; 
+} 
 
-void addNode(node* head){ 
-    cout << "jcp";
-    
-}
-
-void deleteNode(int n){
-    struct Node*temp1 = head;
-    int i;
-    for (i=0; i<n-2; i++)
-      temp1 = temp1->next;
-    struct Node* temp2 = temp1->next;
-    temp1->next = temp2->next;
-    free(temp2);
-}
-void Print();
-node* createLinkedList(){
-    if(head == NULL){
-        head = (node*)malloc(sizeof (struct node));
-    }
-    else{
-        return head;
-    }
-}
-int manin (){
-  head = NULL;
+void deleteNode(struct Node **head_ref, int key) 
+{ 
+    // Store head node 
+    struct Node* temp = *head_ref, *prev; 
   
+    // If head node itself holds the key to be deleted 
+    if (temp != NULL && temp->data == key) 
+    { 
+        *head_ref = temp->next;   // Changed head 
+        free(temp);               // free old head 
+        return; 
+    } 
+  
+    // Search for the key to be deleted, keep track of the 
+    // previous node as we need to change 'prev->next' 
+    while (temp != NULL && temp->data != key) 
+    { 
+        prev = temp; 
+        temp = temp->next; 
+    } 
+  
+    // If key was not present in linked list 
+    if (temp == NULL) return; 
+  
+    // Unlink the node from linked list 
+    prev->next = temp->next; 
+  
+    free(temp);  // Free memory 
+} 
+void printList(struct Node *node) 
+{ 
+    while (node != NULL) 
+    { 
+        printf(" %d ", node->data); 
+        node = node->next; 
+    } 
+} 
+
+int main() 
+{ 
+    /* Start with the empty list */
+    struct Node* head = NULL; 
+  
+    addNode(&head, 7); 
+    addNode(&head, 1); 
+    addNode(&head, 3); 
+    addNode(&head, 2); 
+    printList(head); 
+    printf("\n");
+    deleteNode(&head, 2); //elimina el numero 
+    printList(head); 
+    return 0; 
 }
