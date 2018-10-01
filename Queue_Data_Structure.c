@@ -50,6 +50,20 @@ void printList(struct Node *node)
         printf(" %d ", node->data); 
         node = node->next; 
     } 
+}
+
+int search(struct Node* head, int x) 
+{ 
+    // Base case 
+    if (head == NULL) 
+        return 0; 
+      
+    // If key is present in current node, return true 
+    if (head->data == x) 
+        return 1; 
+  
+    // Recur for remaining list 
+    return search(head->next, x); 
 } 
 
 int main() 
@@ -65,5 +79,7 @@ int main()
     printf("\n");
     deleteNode(&head, 2); //elimina el numero 
     printList(head); 
+    printf("\n");
+    searchNode(head, 21)? printf("Yes") : printf("No"); 
     return 0; 
 }
