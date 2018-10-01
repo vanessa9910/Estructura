@@ -52,7 +52,7 @@ void printList(struct Node *node)
     } 
 }
 
-int search(struct Node* head, int x) 
+int searchNode(struct Node* head, int x) 
 { 
     // Base case 
     if (head == NULL) 
