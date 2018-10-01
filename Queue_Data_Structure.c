@@ -63,7 +63,7 @@ int searchNode(struct Node* head, int x)
         return 1; 
   
     // Recur for remaining list 
-    return search(head->next, x); 
+    return searchNode(head->next, x); 
 } 
 
 int main() 
@@ -77,9 +77,9 @@ int main()
     addNode(&head, 2); 
     printList(head); 
     printf("\n");
-    deleteNode(&head, 2); //elimina el numero 
+    deleteNode(&head, 2); //elimina el numero de la lista
     printList(head); 
     printf("\n");
-    searchNode(head, 21)? printf("Yes") : printf("No"); 
+    searchNode(head, 21)? printf("This number is on the list") : printf("This number is not on the list"); //busca el número en la lista
     return 0; 
 }
