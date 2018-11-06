@@ -6,7 +6,7 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 
-//profe tuve muchisimas dificultades para este proyecto más que nada con el manejo de las carpetas en string  y nisiquiera pude terminarlo
+//profe tuve muchisimas dificultades para este proyecto más que nada con el manejo de las carpetas en string  y nisiquiera pude terminarlo al 100%
 //al principio si jalaba en terminl y todo y meti comandos y todo bien, despues me marco el error de que estba comparndo nodes con string y ya
 //no supe que onda 
 //est tarea lo hice yo sola e intenté basarme lo menos posible en geek for geeks
@@ -51,7 +51,7 @@ void imprPath(node *nodeN){
 }
 //crear un nuevo nodo
 // mkdir - add node
-struct node*insert(string nameN)
+struct node*insert(struct node* actual, string nameN)
 {
 	
 
@@ -146,6 +146,7 @@ int print(){
 struct node*deleteNode(struct node* root, string key)
 {
 	if (root == NULL)
+		
 		return root;
 	else if(root->data == key ){
 		struct node *temp = newNode("");
@@ -168,6 +169,7 @@ struct node*find(struct*node root, string dt)
 	if (root == NULL)
 		return root;
 	else if(root->data==dt){
+		imprPath(root);
 		return root;
 	}
 
@@ -210,36 +212,36 @@ int main(){
 			string file;
 			printf("C:-Vanessa-Escritorio>mkdir ");
 			cin>>file;
-			insert(file);
+			insert(actual, file);
 			}
 
 		  else if(com == "ls"){
 			printf("C:-Vanessa-Escritorio>ls");
 			printf("\n");
 			print();
-			//break;
 		  }
 		  else if(com == "rm"){
 		  	printf("C:-Vanessa-Escritorio>rm ");
 		  	printf("\n");
 		  	string file;
 		  	cin>>file;
-		  	actual = deleteNode(actual,file);
-		  	//break;
+		  	root = deleteNode(root,file);
+		  	
 
 		  }
 		  else if(com== "find"){
 			printf("C:-Vanessa-Escritorio>find ");
 		  	printf("\n");
-		  	//break;
-
+		  	string file;
+		  	cin>>file; 
+			find(root,file)
 		  }
 		  else if(com== "cd"){
 		  	printf("C:-Vanessa-Escritorio>cd");
 		  	printf("\n");
 			string file;
 		  	cin>>file; 
-		  	//break;
+		  	cd(root,actual,file)
 		  }
 
 		  else if(com =="exit"){
