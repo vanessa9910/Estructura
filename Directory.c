@@ -5,6 +5,7 @@
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
+
 //profe tuve muchisimas dificultades para este proyecto más que nada con el manejo de las carpetas en string  y nisiquiera pude terminarlo
 //al principio si jalaba en terminl y todo y meti comandos y todo bien, despues me marco el error de que estba comparndo nodes con string y ya
 //no supe que onda 
@@ -21,7 +22,6 @@ using namespace std;
 
 struct node
 {
-  int lenCarpetas;
   string data;
   struct node *Carpetas[5];
   struct node *Principal;
@@ -40,7 +40,7 @@ node *newNode(string nameN){    //basado de geek for geeks https://www.geeksforg
 node *root = newNode("C:-Users-Escritorio>");
 node *actual =root;
 
-//para imprimir  el path:
+//para imprimir  el path en el que esta actualmente:
 
 void imprPath(node *nodeN){
 	if(nodeN != NULL){
@@ -51,23 +51,47 @@ void imprPath(node *nodeN){
 }
 //crear un nuevo nodo
 // mkdir - add node
-int insert(string nameN)
+struct node*insert(string nameN)
 {
-	int len = actual->lenCarpetas;
+	
 
 	if( actual->Carpetas[0]->data == nameN ||actual->Carpetas[1]->data == nameN ||actual->Carpetas[2]->data == nameN ||actual->Carpetas[3]->data == nameN || actual->Carpetas[4]->data == nameN ||actual->Carpetas[5]->data == nameN ) {
 		  cout<<"The file "<<nameN<<"already exists";
-	  	  return 0;
+	  	  return actual;
 	  }
-	else if (len<5){
-		  actual->Carpetas[len]= newNode(nameN);
-		  actual->Carpetas[len]->data = nameN;
-		  actual->lenCarpetas++;
-		  return 0;
+	if (actual->Carpetas[0]!=NULL){
+		  actual->Carpetas[0]= newNode(nameN);
+		  actual->Carpetas[0]->data = nameN;
+		  return actual;
 	  }
-
+	else if (actual->Carpetas[1]!=NULL){
+		  actual->Carpetas[1]= newNode(nameN);
+		  actual->Carpetas[1]->data = nameN;
+		  return actual;
+	  }
+	else if (actual->Carpetas[2]!=NULL){
+		  actual->Carpetas[2]= newNode(nameN);
+		  actual->Carpetas[2]->data = nameN;
+		  return actual;
+	  }
+	else if (actual->Carpetas[3]!=NULL){
+		  actual->Carpetas[3]= newNode(nameN);
+		  actual->Carpetas[3]->data = nameN;
+		  return actual;
+	  }
+	
+	else if (actual->Carpetas[4]!=NULL){
+		  actual->Carpetas[4]= newNode(nameN);
+		  actual->Carpetas[4]->data = nameN;
+		  return actual;
+	  }
+	else if (actual->Carpetas[5]!=NULL){
+		  actual->Carpetas[5]= newNode(nameN);
+		  actual->Carpetas[5]->data = nameN;
+		  return actual;
+	  }
 	printf("There is no space on the file");
-	return 0;
+	return actual;
 
 
 
@@ -125,9 +149,8 @@ struct node*deleteNode(struct node* root, string key)
 		return root;
 	else if(root->data == key ){
 		struct node *temp = newNode("");
-        free(root);
-        root = temp;
-        return root;
+        	free(root);
+        	return temp;
 	}
 
 	return root->Carpetas[0] = deleteNode(root->Carpetas[0],key);
@@ -140,15 +163,39 @@ struct node*deleteNode(struct node* root, string key)
 };
 
 //find - find
-/*int find(string dt)
+struct node*find(struct*node root, string dt)
 {
-	//struct node*temp =actual;
-	//for( )
+	if (root == NULL)
+		return root;
+	else if(root->data==dt){
+		return root;
+	}
+
+	return root->Carpetas[0] = find(root->Carpetas[0],key);
+	return root->Carpetas[1] = find(root->Carpetas[1],key);
+	return root->Carpetas[2] = find(root->Carpetas[2],key);
+	return root->Carpetas[3] = find(root->Carpetas[3],key);
+	return root->Carpetas[4] = find(root->Carpetas[4],key);
+	return root->Carpetas[5] = find(root->Carpetas[5],key);
 }
 
 //cd - abrir carpeta
+struct node*cd(struct*node root, struct*node actual, string dt)
+{
+	if (root == NULL)
+		return actual;
+	else if(root->data==dt){
+		actual=root
+		return actual;
+	}
 
-*/
+	return root->Carpetas[0] = find(root->Carpetas[0],key);
+	return root->Carpetas[1] = find(root->Carpetas[1],key);
+	return root->Carpetas[2] = find(root->Carpetas[2],key);
+	return root->Carpetas[3] = find(root->Carpetas[3],key);
+	return root->Carpetas[4] = find(root->Carpetas[4],key);
+	return root->Carpetas[5] = find(root->Carpetas[5],key);
+}
 //main
 
 int main(){
@@ -156,7 +203,7 @@ int main(){
 
 
 	while (1){
-		   string com;
+		        string com;
 			printf("C:-Vanessa-Escritorio>");
 			cin>>com;
 		  if(com=="mkdir"){
@@ -190,6 +237,8 @@ int main(){
 		  else if(com== "cd"){
 		  	printf("C:-Vanessa-Escritorio>cd");
 		  	printf("\n");
+			string file;
+		  	cin>>file; 
 		  	//break;
 		  }
 
