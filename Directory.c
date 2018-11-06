@@ -24,7 +24,6 @@ struct node
 {
   string data;
   struct node *Carpetas[5];
-  struct node *Principal;
 };
 
  //inicializar un nodo
