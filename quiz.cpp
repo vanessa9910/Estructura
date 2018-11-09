@@ -1,6 +1,6 @@
 //============================================================================
 // Name        : quiz.cpp
-// Author      : 
+// Author      : Vanessa Jaime
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
@@ -25,7 +25,10 @@ struct node{
 };
 
 struct list*lista= (struct list)malloc(sizeof(struct list)); 
-
+struct node*node1= (struct node)malloc(sizeof(struct node));
+struct node*node2= (struct node)malloc(sizeof(struct node));
+node1-> num = 5;
+node2-> num = 3;
 struct list* connect(node*node1, node*node2, list*lista){
 	
 	
@@ -43,6 +46,7 @@ struct list* connect(node*node1, node*node2, list*lista){
 	
 }
 int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	//cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	connect(node1,node2,lista);
 	return 0;
 }
