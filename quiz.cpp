@@ -33,7 +33,7 @@ node2-> num = 3;
 struct list*aabajo(list*lista, node* node2){
 	if (lista->down == NULL){
 		list*temp = (struct node *)malloc(sizeof(struct node));
-		temp->down == node2;
+		temp->data= node2->num;
 		return temp;
 	}
 	return lista->down = aabajo(lista->down,node2);
