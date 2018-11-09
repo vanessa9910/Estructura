@@ -39,7 +39,7 @@ struct list*aabajo(list*lista, node* node2){
 	return lista->down = aabajo(lista->down,node2);
 }
 struct list* connect(node*node1, node*node2, list*lista){
-	if(lista  == NULL){
+	if(lista->data  == NULL){
 		list*temp = (struct node *)malloc(sizeof(struct node));
 		temp->data = node1->num;
 		temp->next = node2;
