@@ -31,8 +31,6 @@ node *newNode(string nameN){    //basado de geek for geeks https://www.geeksforg
 
 	  node*temp = (struct node *)malloc(sizeof(struct node));
 	  temp->data = nameN;
-	  temp->lenCarpetas = 0;
-	  temp->Principal = NULL;
 	  return temp;
 }
 
