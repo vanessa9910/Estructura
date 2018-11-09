@@ -29,26 +29,26 @@ struct node*node1= (struct node)malloc(sizeof(struct node));
 struct node*node2= (struct node)malloc(sizeof(struct node));
 node1-> num = 5;
 node2-> num = 3;
-struct list*aabajo(list*lista){
+
+struct list*aabajo(list*lista, node* node2){
 	if (lista->down == NULL){
-		lista->down == node2;
-		return lista;
+		list*temp = (struct node *)malloc(sizeof(struct node));
+		temp->down == node2;
+		return temp;
 	}
-	return lista = aabajo(ista->down);
+	return lista->down = aabajo(lista->down,node2);
 }
 struct list* connect(node*node1, node*node2, list*lista){
-	
-	
-	if(lista->data == NULL){
-		lista->data = node1->num;
-		lista->next = node2;
-		return lista;
+	if(lista  == NULL){
+		list*temp = (struct node *)malloc(sizeof(struct node));
+		temp->data = node1->num;
+		temp->next = node2;
+		return temp;
 	}
-	lista = connect(node1,node2,lista->next);
-	return aabajo(lista);
-	
-	
-	
+	lista->next = connect(node1,node2,lista->next);
+	lista->down = aabajo(lista,node2);
+	return lista;
+
 }
 int main() {
 	//cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
